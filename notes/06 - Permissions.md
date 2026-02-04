@@ -7,29 +7,54 @@ A clean, structured summary of the **Permissions** module from Linux Journey. Th
 ## Quick Explanations
 
 ### 1) Reading Permission Strings
-- `ls -l` shows a **type** + 9 permission characters: e.g., `drwxr-xr-x`. The leading letter indicates file type (`-` file, `d` directory). Then triplets for **user**, **group**, **others** with `r` (read), `w` (write), `x` (execute), or `-` (no permission). Execute on a **directory** means you can *enter/traverse* it.  
+- `ls -l` shows a **type** + 9 permission characters: e.g., `drwxr-xr-x`.
+- The leading letter indicates file type (`-` file, `d` directory).
+- Then triplets for **user**, **group**, **others** with `r` (read), `w` (write), `x` (execute), or `-` (no permission).
+- Execute on a **directory** means you can *enter/traverse* it.  
 
 ### 2) Changing Permissions — `chmod`
-- **Symbolic**: target = `u` (user),  `g` (group),  `o` (others),  `a` (all);   operation `+` add,   `-` remove.   Examples: `chmod u+x file`,  `chmod g-w file`, `chmod ug+w file`.  
-- **Octal**: `r=4`, `w=2`, `x=1`. Combine per class. Example: `chmod 755 file` → user `rwx`, group `r-x`, others `r-x`. Avoid reckless recursive `777`; use least‑privilege.  
+**Symbolic**:
+- target = `u` (user),  `g` (group),  `o` (others),  `a` (all);
+- operation `+` add,   `-` remove.  
+  Examples: `chmod u+x file`,  `chmod g-w file`, `chmod ug+w file`.  
+**Octal**:
+  `r=4`, `w=2`, `x=1`.
+  Combine per class.  
+  Example: `chmod 755 file` → user `rwx`, group `r-x`, others `r-x`.
+  Avoid reckless recursive `777`; use least‑privilege.  
 
 ### 3) Ownership — `chown` / `chgrp`
-- Each file has an **owner** (user) and **group**. Change owner: `sudo chown patty file`. Change group: `sudo chgrp whales file`. Both at once: `sudo chown patty:whales file`.  
+- Each file has an **owner** (user) and **group**.
+- Change owner: `sudo chown patty file`.
+- Change group: `sudo chgrp whales file`.
+- Both at once: `sudo chown patty:whales file`.  
 
 ### 4) umask (Default Permissions)
-- `umask` subtracts bits from the default creation perms. Common default: `022` (group/others cannot write). Persist by adding to a shell startup file (e.g., `.profile`/`.bashrc`).  
+- `umask` subtracts bits from the default creation perms.
+- Common default: `022` (group/others cannot write).
+- Persist by adding to a shell startup file (e.g., `.profile`/`.bashrc`).  
 
 ### 5) SUID (setuid)
-- Special bit that makes a program run with the **owner’s** effective UID. Example: `/usr/bin/passwd` is `-rwsr-xr-x` so it can safely update `/etc/shadow` as root. Set with `chmod u+s file` or octal `chmod 4755 file`. Uppercase `S` indicates missing execute on user.  
+- Special bit that makes a program run with the **owner’s** effective UID.  
+  Example: `/usr/bin/passwd` is `-rwsr-xr-x` so it can safely update `/etc/shadow` as root.
+- Set with `chmod u+s file` or octal `chmod 4755 file`.
+- Uppercase `S` indicates missing execute on user.  
 
 ### 6) SGID (setgid)
-- Similar for **group**; program runs with the file’s group. Example: `-rwxr-sr-x` shows SGID in the group slot. Set with `chmod g+s file` or octal `2555`.  
+- Similar for **group**; program runs with the file’s group.  
+  Example: `-rwxr-sr-x` shows SGID in the group slot.
+- Set with `chmod g+s file` or octal `2555`.  
 
 ### 7) Process UIDs
-- Processes carry multiple IDs: **real UID** (who launched), **effective UID** (permissions used for access checks), and **saved UID** (allows toggling between real/effective). SUID programs elevate effective UID only for the operations that require it.  
+Processes carry multiple IDs: 
+- **real UID** (who launched)
+- **effective UID** (permissions used for access checks)
+- **saved UID** (allows toggling between real/effective)
+SUID programs elevate effective UID only for the operations that require it.  
 
 ### 8) Sticky Bit
-- On **directories**, sticky (`t`) allows only the file owner, directory owner, or root to delete/rename files within (classic example: `/tmp` with `rwxrwxrwt`). Set via `chmod +t dir` or octal `1` prefix: `chmod 1755 dir`.  
+- On **directories**, sticky (`t`) allows only the file owner, directory owner, or root to delete/rename files within (classic example: `/tmp` with `rwxrwxrwt`)
+- Set via `chmod +t dir` or octal `1` prefix: `chmod 1755 dir`.  
 
 ---
 
@@ -91,5 +116,7 @@ ls -ld /tmp              # expect: ...t at end
 ---
 
 ## LabEx Conclusions
-- Permissions (r/w/x), ownership, and special bits (SUID/SGID/sticky) form the **access‑control core** of Linux. Use least privilege and auditable elevation.  
+- Permissions (r/w/x), ownership, and special bits (SUID/SGID/sticky)
+- form the **access‑control core** of Linux.
+- Use least privilege and auditable elevation.  
 - Defaults matter: understand `umask` and process UIDs so elevated rights are used **only** when necessary.  
