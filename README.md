@@ -56,15 +56,15 @@ If you want to practice Linux the same way I do:
 
 The `notes/` folder contains my condensed summaries for each Linux topic:
 ### 1️⃣ Foundation Topics
-01-getting-started.md  
-02-command-line.md  
-03-text-fu.md  
-04-advanced-text-fu.md  
+[01-getting-started.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/01%20-%20Getting%20Started.md)  
+[02-command-line.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/02%20-%20Command%20Line.md)  
+[03-text-manipulation.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/03%20-%20File%20Manipulation.md)  
+[04-advanced-text-manipulation.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/04%20-%20Advanced%20Text%20Processing.md)   
 ### 2️⃣ System Management Basics
-05-user-management.md  
-06-permissions.md  
-07-processes.md  
-08-packages.md  
+[05-user-management.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/05%20-%20User%20%26%20Group%20Management.md)  
+[06-permissions.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/06%20-%20Permissions.md)  
+[07-processes.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/07%20-%20Processes.md)  
+[08-packages.md](https://github.com/dinajendeya/Linux-Journey/blob/c9f5027c82a8e74bbab6cb9703b9b4c825ae497b/notes/08%20-%20Packages.md)  
 ### 3️⃣ Intermediate System Concepts
 09-devices.md  
 10-filesystem.md  
